@@ -14,10 +14,15 @@
 
     Query: SELECT first_name, last_name FROM patients WHERE weight between 100 and 120;
 
-#Update the patients table for the allergies column. If the patient's allergies is null then replace it with 'NKA'
+#Update the patients table for the allergies column. If the patients allergies is null then replace it with 'NKA'
 
     Query: update patients SET allergies = "NKA" where allergies is null
 
 #Show first name and last name concatinated into one column to show their full name.
 
    Query: select concat(first_name," ",last_name) AS full_name from patients
+
+#Show first name, last name, and the full province name of each patient.
+ Example: 'Ontario' instead of 'ON'
+
+   Query: select first_name, last_name, province_name from patients join province_names using(province_id);
