@@ -29,3 +29,6 @@
 
 #Show how many patients have a birth_date with 2010 as the birth year.
    Query: select count(patient_id) from patients where birth_date like '2010-%%-%%'
+
+#Show the first_name, last_name, and height of the patient with the greatest height.
+   Query: select first_name, last_name, height from patients where height = (select max(height) from patients);
