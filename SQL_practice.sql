@@ -35,3 +35,6 @@
 
 #Show all columns for patients who have one of the following patient_ids:1,45,534,879,1000
    Query: select * from patients where patient_id in (1,45, 534, 879, 1000);
+
+#Show the total number of admissions
+   Query: SELECT count(patient_id) FROM admissions
