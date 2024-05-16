@@ -38,3 +38,6 @@
 
 #Show the total number of admissions
    Query: SELECT count(patient_id) FROM admissions
+
+#Show all the columns from admissions where the patient was admitted and discharged on the same day.
+   Query: SELECT * FROM admissions where admission_date == discharge_date
