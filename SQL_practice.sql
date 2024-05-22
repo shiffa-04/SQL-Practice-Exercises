@@ -53,3 +53,6 @@
 
 #Write a query to find list of patients first_name, last_name, and allergies where allergies are not null and are from the city of 'Hamilton'
    Query: select first_name, last_name, allergies from patients where allergies IS NOT null AND city = "Hamilton"
+
+#Show unique birth years from patients and order them by ascending.
+   Query: select distinct(year(birth_date)) As birth_year from patients order by birth_year
