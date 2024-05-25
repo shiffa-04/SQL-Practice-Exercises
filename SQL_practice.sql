@@ -42,17 +42,10 @@
 #Show all the columns from admissions where the patient was admitted and discharged on the same day.
    Query: SELECT * FROM admissions where admission_date == discharge_date
 
-#Show the patient id and the total number of admissions for patient_id 579.
-   Query: SELECT patient_id, count(*) As total_admission FROM admissions where patient_id = 579
+#Show unique first names from the patients table which only occurs once in the list.
 
-#Based on the cities that our patients live in, show unique cities that are in province_id 'NS'?
-   Query: SELECT distinct(CITY) FROM patients where province_id IS 'NS'
+#For example, if two or more people are named 'John' in the first_name column then don't include their name in the output list. If only 1 person is named 'Leo' then include them in the output.
+   Query: select first_name from patients group by first_name having count(first_name) = 1
 
-#Write a query to find the first_name, last name and birth date of patients who has height greater than 160 and weight greater than 70
-   Query: select first_name, last_name, birth_date from patients where height > 160 and weight > 70
-
-#Write a query to find list of patients first_name, last_name, and allergies where allergies are not null and are from the city of 'Hamilton'
-   Query: select first_name, last_name, allergies from patients where allergies IS NOT null AND city = "Hamilton"
-
-#Show unique birth years from patients and order them by ascending.
-   Query: select distinct(year(birth_date)) As birth_year from patients order by birth_year
+#Show patient_id and first_name from patients where their first_name start and ends with 's' and is at least 6 characters long.
+   Query: select patient_id, first_name from patients where first_name like 's%s' and len(first_name) >= 6
