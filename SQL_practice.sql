@@ -49,3 +49,6 @@
 
 #Show patient_id and first_name from patients where their first_name start and ends with 's' and is at least 6 characters long.
    Query: select patient_id, first_name from patients where first_name like 's%s' and len(first_name) >= 6
+
+#Show patient_id, first_name, last_name from patients whos diagnosis is 'Dementia'.
+   Query: select patient_id, first_name, last_name from patients join admissions  using(patient_id) where diagnosis = 'Dementia'
