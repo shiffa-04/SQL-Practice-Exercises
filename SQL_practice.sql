@@ -65,4 +65,7 @@ Display the two results in the same row.
          patients;
 #Show first and last name, allergies from patients which have allergies to either 'Penicillin' or 'Morphine'. Show results ordered ascending by allergies then by first_name then by last_name.
    Query: select first_name, last_name, allergies from patients where allergies = 'Penicillin' or allergies= 'Morphine' 
-order by allergies , first_name, last_name
+         order by allergies , first_name, last_name
+
+#Show patient_id, diagnosis from admissions. Find patients admitted multiple times for the same diagnosis.
+   Query: select patient_id, diagnosis from admissions group by patient_id , diagnosis having count(*)>1
