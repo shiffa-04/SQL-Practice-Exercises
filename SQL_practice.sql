@@ -69,3 +69,8 @@ Display the two results in the same row.
 
 #Show patient_id, diagnosis from admissions. Find patients admitted multiple times for the same diagnosis.
    Query: select patient_id, diagnosis from admissions group by patient_id , diagnosis having count(*)>1
+
+#Show the city and the total number of patients in the city.
+Order from most to least patients and then by city name ascending.
+   Query: select city , count(patient_id) As total_patients from patients group by city 
+         order by total_patients desc, city asc
