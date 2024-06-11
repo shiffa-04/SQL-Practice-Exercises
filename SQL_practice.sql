@@ -74,3 +74,11 @@ Display the two results in the same row.
 Order from most to least patients and then by city name ascending.
    Query: select city , count(patient_id) As total_patients from patients group by city 
          order by total_patients desc, city asc
+
+#Show first name, last name and role of every person that is either patient or doctor.
+The roles are either "Patient" or "Doctor"
+   Query: SELECT first_name, last_name, 'Patient' AS role
+         FROM patients
+         UNION ALL
+         SELECT first_name, last_name, 'Doctor' AS role
+         FROM doctors;
