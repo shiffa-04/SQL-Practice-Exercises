@@ -82,3 +82,8 @@ The roles are either "Patient" or "Doctor"
          UNION ALL
          SELECT first_name, last_name, 'Doctor' AS role
          FROM doctors;
+
+#Show all allergies ordered by popularity. Remove NULL values from query.
+   Query: select allergies, count(allergies) from patients 
+         where allergies is not null  
+         group by allergies order by count(allergies) desc
