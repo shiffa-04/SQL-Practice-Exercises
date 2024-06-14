@@ -87,3 +87,6 @@ The roles are either "Patient" or "Doctor"
    Query: select allergies, count(allergies) from patients 
          where allergies is not null  
          group by allergies order by count(allergies) desc
+
+#Show all patient's first_name, last_name, and birth_date who were born in the 1970s decade. Sort the list starting from the earliest birth_date.
+   Query: select first_name, last_name, birth_date from patients where year(birth_date) between 1970 and 1979 order by birth_date
