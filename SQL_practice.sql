@@ -90,3 +90,9 @@ The roles are either "Patient" or "Doctor"
 
 #Show all patient's first_name, last_name, and birth_date who were born in the 1970s decade. Sort the list starting from the earliest birth_date.
    Query: select first_name, last_name, birth_date from patients where year(birth_date) between 1970 and 1979 order by birth_date
+
+#Show the province_id(s), sum of height; where the total sum of its patient's height is greater than or equal to 7,000.
+   Query: SELECT province_id, SUM(height) AS total_height
+         FROM patients
+         GROUP BY province_id
+         HAVING SUM(height) >= 7000;
