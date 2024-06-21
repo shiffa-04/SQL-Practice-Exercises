@@ -97,5 +97,8 @@ The roles are either "Patient" or "Doctor"
          GROUP BY province_id
          HAVING SUM(height) >= 7000;
 
-#We want to display each patient's full name in a single column. Their last_name in all upper letters must appear first, then first_name in all lower case letters. Separate the last_name and first_name with a comma. Order the list by the first_name in decending order.
+#We want to display each patients full name in a single column. Their last_name in all upper letters must appear first, then first_name in all lower case letters. Separate the last_name and first_name with a comma. Order the list by the first_name in decending order.
    Query: select concat(upper(last_name),"," ,lower(first_name)) As FULL_NAME from patients order by first_name Desc;
+
+#Show the difference between the largest weight and smallest weight for patients with the last name 'Maroni'
+   Query: select (max(weight) - min(weight)) AS difference from patients where last_name = 'Maroni'
