@@ -102,3 +102,6 @@ The roles are either "Patient" or "Doctor"
 
 #Show the difference between the largest weight and smallest weight for patients with the last name 'Maroni'
    Query: select (max(weight) - min(weight)) AS difference from patients where last_name = 'Maroni'
+
+#Show all of the days of the month (1-31) and how many admission_dates occurred on that day. Sort by the day with most admissions to least admissions.
+   Query: select day(admission_date) As day_number , count(*) As number_of_admissions from admissions group by day_number order by number_of_admissions DESC
