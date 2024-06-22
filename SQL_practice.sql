@@ -105,3 +105,6 @@ The roles are either "Patient" or "Doctor"
 
 #Show all of the days of the month (1-31) and how many admission_dates occurred on that day. Sort by the day with most admissions to least admissions.
    Query: select day(admission_date) As day_number , count(*) As number_of_admissions from admissions group by day_number order by number_of_admissions DESC
+
+#Show all columns for patient_id 542s most recent admission_date.
+   Query: SELECT * FROM admissions WHERE patient_id = 542 GROUP BY patient_id HAVING admission_date = MAX(admission_date);
