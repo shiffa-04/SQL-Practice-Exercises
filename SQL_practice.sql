@@ -108,3 +108,8 @@ The roles are either "Patient" or "Doctor"
 
 #Show all columns for patient_id 542s most recent admission_date.
    Query: SELECT * FROM admissions WHERE patient_id = 542 GROUP BY patient_id HAVING admission_date = MAX(admission_date);
+
+#Show patient_id, attending_doctor_id, and diagnosis for admissions that match one of the two criteria:
+1. patient_id is an odd number and attending_doctor_id is either 1, 5, or 19.
+2. attending_doctor_id contains a 2 and the length of patient_id is 3 characters.
+   Query: select patient_id, attending_doctor_id, diagnosis from admissions where (patient_id % 2 !=0 And attending_doctor_id In( 1, 5, 19)) OR (attending_doctor_id like '%2%'And length(patient_id)==3)
