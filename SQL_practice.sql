@@ -113,3 +113,6 @@ The roles are either "Patient" or "Doctor"
 1. patient_id is an odd number and attending_doctor_id is either 1, 5, or 19.
 2. attending_doctor_id contains a 2 and the length of patient_id is 3 characters.
    Query: select patient_id, attending_doctor_id, diagnosis from admissions where (patient_id % 2 !=0 And attending_doctor_id In( 1, 5, 19)) OR (attending_doctor_id like '%2%'And length(patient_id)==3)
+
+#Show first_name, last_name, and the total number of admissions attended for each doctor. Every admission has been attended by a doctor.
+   Query: select d.first_name, d.last_name, count(a.admission_date) as admision_total from doctors d join admissions a ON a.attending_doctor_id == d.doctor_id group by first_name, last_name
