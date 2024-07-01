@@ -116,3 +116,6 @@ The roles are either "Patient" or "Doctor"
 
 #Show first_name, last_name, and the total number of admissions attended for each doctor. Every admission has been attended by a doctor.
    Query: select d.first_name, d.last_name, count(a.admission_date) as admision_total from doctors d join admissions a ON a.attending_doctor_id == d.doctor_id group by first_name, last_name
+
+#For each doctor, display their id, full name, and the first and last admission date they attended.
+   Query: select d.doctor_id, concat(d.first_name, " ", d.last_name) as full_name , min(a.admission_date) as first_admission_date, max(a.admission_date) as last_admission_date from doctors d join admissions a on d.doctor_id == a.attending_doctor_id group by d.doctor_id
