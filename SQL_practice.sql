@@ -119,3 +119,10 @@ The roles are either "Patient" or "Doctor"
 
 #For each doctor, display their id, full name, and the first and last admission date they attended.
    Query: select d.doctor_id, concat(d.first_name, " ", d.last_name) as full_name , min(a.admission_date) as first_admission_date, max(a.admission_date) as last_admission_date from doctors d join admissions a on d.doctor_id == a.attending_doctor_id group by d.doctor_id
+
+#Display the total amount of patients for each province. Order by descending.
+Query:   select pro.province_name, count(pat.patient_id) As amount_of_patients 
+         from  patients pat 
+         join province_names pro on pro.province_id == pat.province_id  
+         group by pro.province_name 
+         order by amount_of_patients desc 
