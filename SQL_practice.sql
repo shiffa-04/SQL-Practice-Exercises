@@ -126,3 +126,9 @@ Query:   select pro.province_name, count(pat.patient_id) As amount_of_patients
          join province_names pro on pro.province_id == pat.province_id  
          group by pro.province_name 
          order by amount_of_patients desc 
+
+#For every admission, display the patient's full name, their admission diagnosis, and their doctor's full name who diagnosed their problem
+Query:   select concat(p.first_name," ", p.last_name) As full_name, a.diagnosis, concat(d.first_name," ", d.last_name) As doctors_name 
+         from admissions a
+         join patients p on a.patient_id == p.patient_id
+         join doctors d on a.attending_doctor_id == d.doctor_id
