@@ -132,3 +132,10 @@ Query:   select concat(p.first_name," ", p.last_name) As full_name, a.diagnosis,
          from admissions a
          join patients p on a.patient_id == p.patient_id
          join doctors d on a.attending_doctor_id == d.doctor_id
+
+#display the first name, last name and number of duplicate patients based on their first name and last name.
+Ex: A patient with an identical name can be considered a duplicate.
+Query:select first_name, last_name, count(*) as num_of_duplicates
+      from patients
+      group by first_name, last_name
+      having count(*) > 1
