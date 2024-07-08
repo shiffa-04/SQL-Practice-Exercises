@@ -153,3 +153,8 @@ Query:SELECT
          ELSE 'Other'
       END AS gender
       FROM patients;
+
+#Show patient_id, first_name, last_name from patients whose does not have any records in the admissions table. (Their patient_id does not exist in any admissions.patient_id rows.)
+Query: select p.patient_id, p.first_name, p.last_name 
+       from patients p 
+       where p.patient_id not in (SELECT a.patient_id FROM admissions a)
