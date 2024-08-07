@@ -237,3 +237,21 @@ Query:SELECT province_name
       ON province_names.province_id = patients.province_id
       GROUP BY province_name
       HAVING SUM(CASE WHEN gender = 'M' THEN 1 ELSE 0 END) > SUM(CASE WHEN gender = 'F' THEN 1 ELSE 0 END);
+
+#We are looking for a specific patient. Pull all columns for the patient who matches the following criteria:
+- First_name contains an 'r' after the first two letters.
+- Identifies their gender as 'F'
+- Born in February, May, or December
+- Their weight would be between 60kg and 80kg
+- Their patient_id is an odd number
+- They are from the city 'Kingston'
+
+Query:SELECT *
+      FROM patients
+      WHERE
+      SUBSTRING(first_name, 3) LIKE '%r%' AND
+      gender = 'F' AND
+      MONTH(birth_date) IN (2, 5, 12) AND
+      weight BETWEEN 60 AND 80 AND
+      MOD(patient_id, 2) = 1 AND
+      city = 'Kingston';
