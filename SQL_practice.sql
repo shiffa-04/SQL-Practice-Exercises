@@ -255,3 +255,13 @@ Query:SELECT *
       weight BETWEEN 60 AND 80 AND
       MOD(patient_id, 2) = 1 AND
       city = 'Kingston';
+
+#Show the percent of patients that have 'M' as their gender. Round the answer to the nearest hundreth number and in percent form.
+
+Query:SELECT 
+    CONCAT(
+        ROUND((COUNT(CASE WHEN gender = 'M' THEN 1 END) * 100.0 / COUNT(*)), 2), 
+        '%'
+    ) AS percent_of_male_patients
+FROM 
+    patients;
