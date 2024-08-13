@@ -277,3 +277,12 @@ Query:SELECT
          admission_date
       ORDER BY 
          admission_date;
+#Sort the province names in ascending order in such a way that the province 'Ontario' is always on top.
+Query:SELECT province_name
+      FROM provinces
+      ORDER BY 
+         CASE 
+            WHEN province_name = 'Ontario' THEN 0
+            ELSE 1
+         END, 
+         province_name ASC;
