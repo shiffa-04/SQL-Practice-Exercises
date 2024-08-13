@@ -286,3 +286,23 @@ Query:SELECT province_name
             ELSE 1
          END, 
          province_name ASC;
+
+#We need a breakdown for the total amount of admissions each doctor has started each year. Show the doctor_id, doctor_full_name, specialty, year, total_admissions for that year.
+Query: SELECT 
+         d.doctor_id,
+         CONCAT(d.first_name, ' ', d.last_name) AS doctor_full_name,
+         d.specialty,
+         YEAR(a.admission_date) AS year,
+         COUNT(a.patient_id) AS total_admissions
+      FROM 
+         admissions a
+      JOIN 
+         doctors d ON a.attending_doctor_id = d.doctor_id
+      GROUP BY 
+         d.doctor_id,
+         doctor_full_name,
+         d.specialty,
+         year
+      ORDER BY 
+         d.doctor_id,
+         year;
