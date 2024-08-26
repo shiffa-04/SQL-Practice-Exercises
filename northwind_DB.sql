@@ -17,3 +17,8 @@ Query:  select order_date, shipped_date, customer_id, freight
 Query:  select employee_id, order_id, customer_id, required_date, shipped_date
         from orders 
         where shipped_date > required_date
+
+#Show all the even numbered Order_id from the orders table
+Query:  SELECT order_id
+        FROM orders
+        WHERE mod(order_id,2)=0;
