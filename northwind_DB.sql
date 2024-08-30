@@ -28,3 +28,8 @@ Quey:   SELECT city, company_name, contact_name
         FROM customers
         WHERE city LIKE '%L%'
         ORDER BY contact_name;
+
+#Show the company_name, contact_name, fax number of all customers that has a fax number. (not null)
+Query:  SELECT company_name, contact_name, fax
+        FROM customers
+        WHERE Fax IS NOT NULL;
