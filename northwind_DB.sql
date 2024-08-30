@@ -22,3 +22,9 @@ Query:  select employee_id, order_id, customer_id, required_date, shipped_date
 Query:  SELECT order_id
         FROM orders
         WHERE mod(order_id,2)=0;
+
+#Show the city, company_name, contact_name of all customers from cities which contains the letter 'L' in the city name, sorted by contact_name
+Quey:   SELECT city, company_name, contact_name
+        FROM customers
+        WHERE city LIKE '%L%'
+        ORDER BY contact_name;
