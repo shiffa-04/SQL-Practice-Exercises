@@ -33,3 +33,8 @@ Quey:   SELECT city, company_name, contact_name
 Query:  SELECT company_name, contact_name, fax
         FROM customers
         WHERE Fax IS NOT NULL;
+
+#Show the first_name, last_name. hire_date of the most recently hired employee.
+Query:  Select first_name, last_name, hire_date
+        From employees
+        Where hire_date = (Select Max(hire_date) From employees)
