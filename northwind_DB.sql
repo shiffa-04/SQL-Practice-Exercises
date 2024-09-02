@@ -38,3 +38,7 @@ Query:  SELECT company_name, contact_name, fax
 Query:  Select first_name, last_name, hire_date
         From employees
         Where hire_date = (Select Max(hire_date) From employees)
+
+#Show the average unit price rounded to 2 decimal places, the total units in stock, total discontinued products from the products table.
+Query:  SELECT ROUND(sum(unit_price)/count(unit_price),2) As average_price,sum(units_in_stock) As total_stock, sum(discontinued) As total_discontinued 
+        FROM products
