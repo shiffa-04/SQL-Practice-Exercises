@@ -42,3 +42,9 @@ Query:  Select first_name, last_name, hire_date
 #Show the average unit price rounded to 2 decimal places, the total units in stock, total discontinued products from the products table.
 Query:  SELECT ROUND(sum(unit_price)/count(unit_price),2) As average_price,sum(units_in_stock) As total_stock, sum(discontinued) As total_discontinued 
         FROM products
+
+#Show the ProductName, CompanyName, CategoryName from the products, suppliers, and categories table
+Query:  SELECT p.product_name, s.company_name, c.category_name
+        FROM products p
+        JOIN suppliers s ON s.supplier_id = p.Supplier_id
+        JOIN categories c On c.category_id = p.Category_id;
