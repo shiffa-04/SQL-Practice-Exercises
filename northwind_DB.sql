@@ -48,3 +48,9 @@ Query:  SELECT p.product_name, s.company_name, c.category_name
         FROM products p
         JOIN suppliers s ON s.supplier_id = p.Supplier_id
         JOIN categories c On c.category_id = p.Category_id;
+
+#Show the category_name and the average product unit price for each category rounded to 2 decimal places.
+Query:  select c.category_name, round(sum(unit_price)/count(unit_price),2) As average_unit_price 
+        from categories c
+        join products p on c.category_id = p.category_id
+        group by c.category_name
