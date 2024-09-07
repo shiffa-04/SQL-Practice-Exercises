@@ -54,3 +54,11 @@ Query:  select c.category_name, round(sum(unit_price)/count(unit_price),2) As av
         from categories c
         join products p on c.category_id = p.category_id
         group by c.category_name
+
+#Show the city, company_name, contact_name from the customers and suppliers table merged together.
+Create a column which contains 'customers' or 'suppliers' depending on the table it came from.
+Query:  select City, company_name, contact_name, 'customers' as relationship 
+        from customers
+        union
+        select city, company_name, contact_name, 'suppliers'
+        from suppliers
